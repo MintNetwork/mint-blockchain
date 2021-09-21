@@ -15,17 +15,17 @@ from blspy import G2Element
 
 from clvm_tools.binutils import assemble
 
-from chia.consensus.blockchain import ReceiveBlockResult
-from chia.consensus.constants import ConsensusConstants
-from chia.types.announcement import Announcement
-from chia.types.blockchain_format.program import Program
-from chia.types.coin_record import CoinRecord
-from chia.types.coin_spend import CoinSpend
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.full_block import FullBlock
-from chia.types.spend_bundle import SpendBundle
-from chia.util.errors import Err
-from chia.util.ints import uint32
+from mint.consensus.blockchain import ReceiveBlockResult
+from mint.consensus.constants import ConsensusConstants
+from mint.types.announcement import Announcement
+from mint.types.blockchain_format.program import Program
+from mint.types.coin_record import CoinRecord
+from mint.types.coin_spend import CoinSpend
+from mint.types.condition_opcodes import ConditionOpcode
+from mint.types.full_block import FullBlock
+from mint.types.spend_bundle import SpendBundle
+from mint.util.errors import Err
+from mint.util.ints import uint32
 from tests.block_tools import create_block_tools, test_constants
 from tests.util.keyring import TempKeyring
 
