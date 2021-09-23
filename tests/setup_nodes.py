@@ -5,25 +5,25 @@ import signal
 from secrets import token_bytes
 from typing import Dict, List, Optional
 
-from chia.consensus.constants import ConsensusConstants
-from chia.daemon.server import WebSocketServer, create_server_for_daemon, daemon_launch_lock_path, singleton
-from chia.full_node.full_node_api import FullNodeAPI
-from chia.server.start_farmer import service_kwargs_for_farmer
-from chia.server.start_full_node import service_kwargs_for_full_node
-from chia.server.start_harvester import service_kwargs_for_harvester
-from chia.server.start_introducer import service_kwargs_for_introducer
-from chia.server.start_service import Service
-from chia.server.start_timelord import service_kwargs_for_timelord
-from chia.server.start_wallet import service_kwargs_for_wallet
-from chia.simulator.start_simulator import service_kwargs_for_full_node_simulator
-from chia.timelord.timelord_launcher import kill_processes, spawn_process
-from chia.types.peer_info import PeerInfo
-from chia.util.bech32m import encode_puzzle_hash
+from mint.consensus.constants import ConsensusConstants
+from mint.daemon.server import WebSocketServer, create_server_for_daemon, daemon_launch_lock_path, singleton
+from mint.full_node.full_node_api import FullNodeAPI
+from mint.server.start_farmer import service_kwargs_for_farmer
+from mint.server.start_full_node import service_kwargs_for_full_node
+from mint.server.start_harvester import service_kwargs_for_harvester
+from mint.server.start_introducer import service_kwargs_for_introducer
+from mint.server.start_service import Service
+from mint.server.start_timelord import service_kwargs_for_timelord
+from mint.server.start_wallet import service_kwargs_for_wallet
+from mint.simulator.start_simulator import service_kwargs_for_full_node_simulator
+from mint.timelord.timelord_launcher import kill_processes, spawn_process
+from mint.types.peer_info import PeerInfo
+from mint.util.bech32m import encode_puzzle_hash
 from tests.block_tools import create_block_tools, create_block_tools_async, test_constants
 from tests.util.keyring import TempKeyring
-from chia.util.hash import std_hash
-from chia.util.ints import uint16, uint32
-from chia.util.keychain import bytes_to_mnemonic
+from mint.util.hash import std_hash
+from mint.util.ints import uint16, uint32
+from mint.util.keychain import bytes_to_mnemonic
 from tests.time_out_assert import time_out_assert_custom_interval
 
 
@@ -217,10 +217,10 @@ async def setup_farmer(
     config = bt.config["farmer"]
     config_pool = bt.config["pool"]
 
-    config["xch_target_address"] = encode_puzzle_hash(b_tools.farmer_ph, "xch")
+    config["xkm_target_address"] = encode_puzzle_hash(b_tools.farmer_ph, "xkm")
     config["pool_public_keys"] = [bytes(pk).hex() for pk in b_tools.pool_pubkeys]
     config["port"] = port
-    config_pool["xch_target_address"] = encode_puzzle_hash(b_tools.pool_ph, "xch")
+    config_pool["xkm_target_address"] = encode_puzzle_hash(b_tools.pool_ph, "xkm")
 
     if full_node_port:
         config["full_node_peer"]["host"] = self_hostname
