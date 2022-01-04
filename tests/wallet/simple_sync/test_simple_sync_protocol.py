@@ -6,22 +6,22 @@ import pytest
 from clvm.casts import int_to_bytes
 from colorlog import logging
 
-from chia.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
-from chia.protocols import wallet_protocol, full_node_protocol
-from chia.protocols.full_node_protocol import RespondTransaction
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.protocols.wallet_protocol import RespondToCoinUpdates, CoinStateUpdate, RespondToPhUpdates, CoinState
-from chia.server.outbound_message import NodeType
-from chia.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
-from chia.types.blockchain_format.coin import Coin
-from chia.types.coin_record import CoinRecord
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.condition_with_args import ConditionWithArgs
-from chia.types.peer_info import PeerInfo
-from chia.types.spend_bundle import SpendBundle
-from chia.util.ints import uint16, uint32, uint64
-from chia.wallet.wallet import Wallet
-from chia.wallet.wallet_state_manager import WalletStateManager
+from mint.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
+from mint.protocols import wallet_protocol, full_node_protocol
+from mint.protocols.full_node_protocol import RespondTransaction
+from mint.protocols.protocol_message_types import ProtocolMessageTypes
+from mint.protocols.wallet_protocol import RespondToCoinUpdates, CoinStateUpdate, RespondToPhUpdates, CoinState
+from mint.server.outbound_message import NodeType
+from mint.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
+from mint.types.blockchain_format.coin import Coin
+from mint.types.coin_record import CoinRecord
+from mint.types.condition_opcodes import ConditionOpcode
+from mint.types.condition_with_args import ConditionWithArgs
+from mint.types.peer_info import PeerInfo
+from mint.types.spend_bundle import SpendBundle
+from mint.util.ints import uint16, uint32, uint64
+from mint.wallet.wallet import Wallet
+from mint.wallet.wallet_state_manager import WalletStateManager
 from tests.connection_utils import add_dummy_connection
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets, bt
 from tests.time_out_assert import time_out_assert
@@ -202,7 +202,7 @@ class TestSimpleSyncProtocol:
             await full_node_api.farm_new_transaction_block(FarmNewBlockProtocol(puzzle_hash))
 
         # Let's make sure the wallet can handle a non ephemeral launcher
-        from chia.wallet.puzzles.singleton_top_layer import SINGLETON_LAUNCHER_HASH
+        from mint.wallet.puzzles.singleton_top_layer import SINGLETON_LAUNCHER_HASH
 
         tx_record = await wallet.generate_signed_transaction(uint64(10), SINGLETON_LAUNCHER_HASH, uint64(0))
         await wallet.push_transaction(tx_record)

@@ -2,16 +2,16 @@ from collections import defaultdict
 from dataclasses import dataclass, replace
 from typing import Dict, Iterator, Optional
 
-from chia.util.condition_tools import created_outputs_for_conditions_dict
-from chia.full_node.mempool_check_conditions import mempool_check_conditions_dict, get_name_puzzle_conditions
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.types.spend_bundle import SpendBundle
-from chia.util.ints import uint32, uint64
-from chia.full_node.bundle_tools import simple_solution_generator
-from chia.util.errors import Err
-from chia.consensus.cost_calculator import NPCResult
+from mint.util.condition_tools import created_outputs_for_conditions_dict
+from mint.full_node.mempool_check_conditions import mempool_check_conditions_dict, get_name_puzzle_conditions
+from mint.types.blockchain_format.coin import Coin
+from mint.types.blockchain_format.sized_bytes import bytes32
+from mint.types.coin_record import CoinRecord
+from mint.types.spend_bundle import SpendBundle
+from mint.util.ints import uint32, uint64
+from mint.full_node.bundle_tools import simple_solution_generator
+from mint.util.errors import Err
+from mint.consensus.cost_calculator import NPCResult
 
 
 MAX_COST = 11000000000
