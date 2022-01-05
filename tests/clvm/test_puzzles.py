@@ -3,13 +3,13 @@ from unittest import TestCase
 
 from blspy import AugSchemeMPL, BasicSchemeMPL, G1Element, G2Element
 
-from chia.types.blockchain_format.program import Program
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_spend import CoinSpend
-from chia.types.spend_bundle import SpendBundle
-from chia.util.condition_tools import ConditionOpcode
-from chia.util.hash import std_hash
-from chia.wallet.puzzles import (
+from mint.types.blockchain_format.program import Program
+from mint.types.blockchain_format.sized_bytes import bytes32
+from mint.types.coin_spend import CoinSpend
+from mint.types.spend_bundle import SpendBundle
+from mint.util.condition_tools import ConditionOpcode
+from mint.util.hash import std_hash
+from mint.wallet.puzzles import (
     p2_conditions,
     p2_delegated_conditions,
     p2_delegated_puzzle,
