@@ -10,6 +10,7 @@ def main():
 
     scm_full_version = get_version(root="..", relative_to=__file__)
     # scm_full_version = "1.0.5.dev22"
+    scm_full_version = "0.2.11"
     os.environ["SCM_VERSION"] = scm_full_version
 
     left_full_version = scm_full_version.split("+")

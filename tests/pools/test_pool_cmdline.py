@@ -4,8 +4,8 @@ import click
 import pytest
 from click.testing import CliRunner, Result
 
-from chia.cmds.plotnft import validate_fee
-from chia.cmds.plotnft import create_cmd, show_cmd
+from mint.cmds.plotnft import validate_fee
+from mint.cmds.plotnft import create_cmd, show_cmd
 
 
 class TestPoolNFTCommands:
